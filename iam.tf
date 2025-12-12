@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "policy" {
       "logs:GetQueryResults"
     ]
     effect    = "Allow"
-    resources = ["arn:${local.partition}:logs:${data.aws_region.current.name}:${local.account_id}:log-group:airflow-${var.name}-*"]
+    resources = ["arn:${local.partition}:logs:${data.aws_region.current.region}:${local.account_id}:log-group:airflow-${var.name}-*"]
   }
 
   #checkov:skip=CKV_AWS_356
@@ -68,7 +68,7 @@ data "aws_iam_policy_document" "policy" {
       "sqs:SendMessage"
     ]
     effect    = "Allow"
-    resources = ["arn:${local.partition}:sqs:${data.aws_region.current.name}:*:airflow-celery-*"]
+    resources = ["arn:${local.partition}:sqs:${data.aws_region.current.region}:*:airflow-celery-*"]
   }
 
   statement {
@@ -84,8 +84,8 @@ data "aws_iam_policy_document" "policy" {
       test     = "StringLike"
       variable = "kms:ViaService"
       values = [
-        "sqs.${data.aws_region.current.name}.amazonaws.com",
-        "s3.${data.aws_region.current.name}.amazonaws.com"
+        "sqs.${data.aws_region.current.region}.amazonaws.com",
+        "s3.${data.aws_region.current.region}.amazonaws.com"
       ]
     }
   }
@@ -93,7 +93,7 @@ data "aws_iam_policy_document" "policy" {
   statement {
     actions   = ["airflow:PublishMetrics"]
     effect    = "Allow"
-    resources = ["arn:${local.partition}:airflow:${data.aws_region.current.name}:${local.account_id}:environment/${var.name}"]
+    resources = ["arn:${local.partition}:airflow:${data.aws_region.current.region}:${local.account_id}:environment/${var.name}"]
   }
 
   #checkov:skip=CKV_AWS_356
@@ -120,7 +120,7 @@ module "combined_boundary_policy" {
 module "iam_role" {
   count   = var.create_iam_role ? 1 : 0
   source  = "schubergphilis/mcaf-role/aws"
-  version = "0.4.0"
+  version = "0.5.3"
 
   name                  = join("-", [var.role_prefix, "MWAA", var.name])
   create_policy         = true
