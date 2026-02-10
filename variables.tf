@@ -463,3 +463,15 @@ output "trusting_accounts_deprecation" {
     ? "⚠️ Warning: 'trusting_accounts' is deprecated/unused and has no effect."
     : "" )
 }
+
+variable "schedulers" {
+  description = "Number of Airflow schedulers (Airflow v2+). Valid range: 2-5 (or null to use AWS default)."
+  type        = number
+  default     = null
+}
+
+variable "permissions_boundary_arn" {
+  description = "ARN of the permissions boundary to apply to the created MWAA execution role. If null, no boundary is applied."
+  type        = string
+  default     = null
+}
