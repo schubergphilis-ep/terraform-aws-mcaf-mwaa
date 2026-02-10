@@ -93,22 +93,21 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.59.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.59.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_combined_boundary_policy"></a> [combined\_boundary\_policy](#module\_combined\_boundary\_policy) | app.terraform.io/devolksbank-ep/buildingblock-ep-boundary-policy-gen/aws | ~> 0.4.0 |
-| <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | schubergphilis/mcaf-role/aws | 0.4.0 |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis/mcaf-s3/aws | 0.15.0 |
+| <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | schubergphilis/mcaf-role/aws | 0.5.3 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis/mcaf-s3/aws | 2.0.0 |
 
 ## Resources
 
@@ -147,6 +146,7 @@ No requirements.
 | <a name="input_min_workers"></a> [min\_workers](#input\_min\_workers) | The minimum number of workers that you want to run in your environment. | `number` | `1` | no |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `string` | n/a | yes |
 | <a name="input_permissions_boundary"></a> [permissions\_boundary](#input\_permissions\_boundary) | Will be deprecated in future version | `string` | `null` | no |
+| <a name="input_permissions_boundary_arn"></a> [permissions\_boundary\_arn](#input\_permissions\_boundary\_arn) | ARN of the permissions boundary to apply to the created MWAA execution role. If null, no boundary is applied. | `string` | `null` | no |
 | <a name="input_plugins_s3_object_version"></a> [plugins\_s3\_object\_version](#input\_plugins\_s3\_object\_version) | The plugins.zip file version you want to use. | `string` | `null` | no |
 | <a name="input_plugins_s3_path"></a> [plugins\_s3\_path](#input\_plugins\_s3\_path) | The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then plugins\_s3\_object\_version is required | `string` | `null` | no |
 | <a name="input_policy"></a> [policy](#input\_policy) | A valid bucket policy JSON document | `string` | `null` | no |
@@ -157,6 +157,7 @@ No requirements.
 | <a name="input_s3_logging"></a> [s3\_logging](#input\_s3\_logging) | Logging configuration, logging is disabled by default. | <pre>object({<br/>    target_bucket = string<br/>    target_prefix = string<br/>    target_object_key_format = optional(object({<br/>      format_type           = optional(string)                 # "simple" or "partitioned"<br/>      partition_date_source = optional(string, "DeliveryTime") # Required if format_type is "partitioned", default is DeliveryTime<br/>    }))<br/>  })</pre> | `null` | no |
 | <a name="input_scheduler_logs_enabled"></a> [scheduler\_logs\_enabled](#input\_scheduler\_logs\_enabled) | Enabling or disabling the collection of logs for the schedulers | `bool` | `false` | no |
 | <a name="input_scheduler_logs_level"></a> [scheduler\_logs\_level](#input\_scheduler\_logs\_level) | Schedulers logging level. Valid values: CRITICAL, ERROR, WARNING, INFO, DEBUG | `string` | `"INFO"` | no |
+| <a name="input_schedulers"></a> [schedulers](#input\_schedulers) | Number of Airflow schedulers (Airflow v2+). Valid range: 2-5 (or null to use AWS default). | `number` | `null` | no |
 | <a name="input_source_bucket_arn"></a> [source\_bucket\_arn](#input\_source\_bucket\_arn) | If `create_s3_bucket` is `false` then set this to the Amazon Resource Name (ARN) of your Amazon S3 storage bucket. | `string` | `null` | no |
 | <a name="input_startup_script_s3_path"></a> [startup\_script\_s3\_path](#input\_startup\_script\_s3\_path) | The relative path to the startup script on your Amazon S3 storage bucket. For example, startup.sh | `string` | `null` | no |
 | <a name="input_startup_script_s3_path_version"></a> [startup\_script\_s3\_path\_version](#input\_startup\_script\_s3\_path\_version) | The version of the startup script on your Amazon S3 storage bucket. | `string` | `null` | no |

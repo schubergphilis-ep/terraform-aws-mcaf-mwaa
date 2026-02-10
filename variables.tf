@@ -315,3 +315,9 @@ variable "schedulers" {
   type        = number
   default     = null
 }
+
+variable "permissions_boundary_arn" {
+  description = "ARN of the permissions boundary to apply to the created MWAA execution role. If null, no boundary is applied."
+  type        = string
+  default     = null
+}
