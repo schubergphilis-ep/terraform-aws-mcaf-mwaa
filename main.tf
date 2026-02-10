@@ -54,6 +54,7 @@ resource "aws_mwaa_environment" "default" {
   kms_key                          = var.kms_key_arn
   max_workers                      = var.max_workers
   min_workers                      = var.min_workers
+  schedulers                       = var.schedulers
   plugins_s3_object_version        = var.plugins_s3_object_version
   plugins_s3_path                  = local.plugins_s3_path
   requirements_s3_object_version   = var.requirements_s3_object_version

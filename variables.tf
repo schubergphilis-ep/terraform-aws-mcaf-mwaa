@@ -309,3 +309,9 @@ variable "dag_bucket_policy" {
   default     = null
   description = "A valid dag bucket policy JSON document"
 }
+
+variable "schedulers" {
+  description = "Number of Airflow schedulers (Airflow v2+). Valid range: 2-5 (or null to use AWS default)."
+  type        = number
+  default     = null
+}
