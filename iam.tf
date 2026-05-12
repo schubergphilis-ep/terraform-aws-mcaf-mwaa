@@ -130,7 +130,7 @@ data "aws_iam_policy_document" "policy" {
       "sqs:SendMessage"
     ]
     resources = length(coalesce(var.sqs_queue_arns, [])) > 0 ? var.sqs_queue_arns : [
-      "arn:${local.partition}:sqs:${data.aws_region.current.region}:${local.account_id}:airflow-celery-*"
+      "arn:${local.partition}:sqs:${data.aws_region.current.region}:*:airflow-celery-*"
     ]
   }
 
