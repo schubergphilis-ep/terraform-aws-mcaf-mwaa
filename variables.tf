@@ -100,8 +100,8 @@ variable "associated_security_group_ids" {
     A list of security group IDs to associate with the MWAA environment, in addition to the security group created by this module.
     These security groups are not modified. If `create_security_group` is false, the provided security groups must include the desired rules.
   EOT
-  type    = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "allowed_cidr_blocks" {
@@ -314,7 +314,7 @@ variable "task_logs_level" {
 variable "webserver_logs_enabled" {
   description = "Enable webserver logs."
   type        = bool
- default     = false
+  default     = false
 }
 
 variable "webserver_logs_level" {
@@ -396,8 +396,8 @@ variable "manage_mwaa_log_group_retention" {
     If true, the module will ensure MWAA CloudWatch log groups exist and enforce a retention period.
     This works for both new and existing environments: no import is required (Terraform will adopt by name).
   EOT
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "mwaa_log_retention_in_days" {
@@ -447,19 +447,19 @@ variable "trusting_accounts" {
 
 # Deprecation warnings kept because you asked for them previously.
 output "log_bucket_deprecation" {
-  value = ( var.log_bucket != null
+  value = (var.log_bucket != null
     ? "⚠️ Warning: 'log_bucket' is deprecated and has no effect. Use 's3_logging.target_bucket' instead."
-    : "" )
+  : "")
 }
 
 output "kms_key_deprecation" {
-  value = ( var.kms_key != null
+  value = (var.kms_key != null
     ? "⚠️ Warning: 'kms_key' is deprecated. Use 'kms_key_arn' instead."
-    : "" )
+  : "")
 }
 
 output "trusting_accounts_deprecation" {
-  value = ( length(var.trusting_accounts) > 0
+  value = (length(var.trusting_accounts) > 0
     ? "⚠️ Warning: 'trusting_accounts' is deprecated/unused and has no effect."
-    : "" )
+  : "")
 }

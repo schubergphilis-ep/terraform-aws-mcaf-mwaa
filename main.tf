@@ -78,11 +78,11 @@ resource "aws_mwaa_environment" "default" {
   execution_role_arn = local.execution_role_arn
 
   # General configuration
-  dag_s3_path          = var.dag_s3_path
-  environment_class    = var.environment_class
-  endpoint_management  = var.endpoint_management
-  kms_key              = var.kms_key_arn
-  webserver_access_mode = var.webserver_access_mode
+  dag_s3_path                     = var.dag_s3_path
+  environment_class               = var.environment_class
+  endpoint_management             = var.endpoint_management
+  kms_key                         = var.kms_key_arn
+  webserver_access_mode           = var.webserver_access_mode
   weekly_maintenance_window_start = var.weekly_maintenance_window_start
 
   # Worker scaling
@@ -96,11 +96,11 @@ resource "aws_mwaa_environment" "default" {
   worker_replacement_strategy = var.worker_replacement_strategy
 
   # Optional S3 artifacts
-  plugins_s3_path                = local.plugins_s3_path
-  plugins_s3_object_version       = var.plugins_s3_object_version
-  requirements_s3_path           = local.requirements_s3_path
-  requirements_s3_object_version = var.requirements_s3_object_version
-  startup_script_s3_path         = local.startup_script_s3_path
+  plugins_s3_path                  = local.plugins_s3_path
+  plugins_s3_object_version        = var.plugins_s3_object_version
+  requirements_s3_path             = local.requirements_s3_path
+  requirements_s3_object_version   = var.requirements_s3_object_version
+  startup_script_s3_path           = local.startup_script_s3_path
   startup_script_s3_object_version = var.startup_script_s3_path_version
 
   ############################################
