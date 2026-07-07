@@ -227,7 +227,7 @@ data "aws_iam_policy_document" "policy" {
 ############################################
 module "iam_role" {
   count   = var.create_iam_role ? 1 : 0
-  source  = "schubergphilis/mcaf-role/aws"
+  source  = "schubergphilis-ep/mcaf-role/aws"
   version = "0.5.3"
 
   name                  = "${var.role_prefix}-MWAA-${var.name}"
