@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "combined" {
 module "s3_bucket" {
   #checkov:skip=CKV_AWS_21
   count   = var.create_s3_bucket ? 1 : 0
-  source  = "schubergphilis/mcaf-s3/aws"
+  source  = "schubergphilis-ep/mcaf-s3/aws"
   version = "3.0.0"
 
   name           = "${var.name}-mwaa"
