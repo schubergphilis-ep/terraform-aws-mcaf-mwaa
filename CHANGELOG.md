@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.2](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/compare/v1.1.1...v1.1.2) (2026-07-07)
+
+
+### 🐛 Fixes
+
+* migrate MCAF module sources ([#2](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/issues/2)) ([6310961](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/commit/6310961e9e3c94b58604f724de28378e35e62538))
+
 ## [1.1.1](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/compare/v1.1.1-rc.1...v1.1.1) (2026-06-29)
 
 ## [1.1.1-rc.1](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/compare/v1.1.1-rc.0...v1.1.1-rc.1) (2026-05-12)
@@ -83,4 +90,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.2](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/compare/v0.0.1...v0.0.2) (2023-01-26)
 
 ## 0.0.1 (2022-12-19)
-
