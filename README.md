@@ -20,8 +20,8 @@ Terraform module to create and manage AWS MWAA environments.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | schubergphilis/mcaf-role/aws | 0.5.3 |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis/mcaf-s3/aws | 3.0.0 |
+| <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | schubergphilis-ep/mcaf-role/aws | 0.5.3 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis-ep/mcaf-s3/aws | 3.0.0 |
 
 ## Resources
 
