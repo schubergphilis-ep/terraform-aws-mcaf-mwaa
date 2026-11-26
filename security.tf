@@ -16,7 +16,7 @@
 
 resource "aws_security_group" "mwaa" {
   #checkov:skip=CKV2_AWS_5
-  #checkov:skip=CKV_AWS_382:MWAA requires outbound to all destinations by default; narrow it with security_group_egress_cidr_blocks
+  #checkov:skip=CKV_AWS_382:Open egress is the module default for backward compatibility (package installs); narrow it with security_group_egress_cidr_blocks
   count = var.create_security_group ? 1 : 0
 
   name        = var.name
