@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/compare/v1.1.2...v1.2.0) (2026-11-26)
+
+
+### 🚀 Features
+
+* Endpoint service outputs ([#4](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/issues/4)) ([5d2b146](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/commit/5d2b146eacb7fee02fda5327623c7870b9558cee))
+
 ## [1.1.2](https://github.com/schubergphilis-ep/terraform-aws-mcaf-mwaa/compare/v1.1.1...v1.1.2) (2026-07-07)
 
 
