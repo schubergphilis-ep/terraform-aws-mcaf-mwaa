@@ -6,27 +6,27 @@ Terraform module to create and manage AWS MWAA environments.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_iam_role"></a> [iam\_role](#module\_iam\_role) | schubergphilis-ep/mcaf-role/aws | 0.5.3 |
 | <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | schubergphilis-ep/mcaf-s3/aws | 3.0.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_cloudwatch_log_group.mwaa_protected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.mwaa_unprotected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_mwaa_environment.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mwaa_environment) | resource |
@@ -40,12 +40,9 @@ Terraform module to create and manage AWS MWAA environments.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_airflow_version"></a> [airflow\_version](#input\_airflow\_version) | Airflow version for the MWAA environment. | `string` | n/a | yes |
-| <a name="input_name"></a> [name](#input\_name) | Name of the MWAA environment. | `string` | n/a | yes |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Subnet IDs for the MWAA environment. MWAA currently requires exactly two subnets. | `list(string)` | n/a | yes |
-| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID where the MWAA environment will be deployed. | `string` | n/a | yes |
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_airflow_configuration_options"></a> [airflow\_configuration\_options](#input\_airflow\_configuration\_options) | Airflow configuration override options for the environment. | `any` | `null` | no |
+| <a name="input_airflow_version"></a> [airflow\_version](#input\_airflow\_version) | Airflow version for the MWAA environment. | `string` | n/a | yes |
 | <a name="input_allowed_cidr_blocks"></a> [allowed\_cidr\_blocks](#input\_allowed\_cidr\_blocks) | IPv4 CIDR blocks allowed to reach the created security group on port 443. | `list(string)` | `[]` | no |
 | <a name="input_associated_security_group_ids"></a> [associated\_security\_group\_ids](#input\_associated\_security\_group\_ids) | A list of security group IDs to associate with the MWAA environment, in addition to the security group created by this module.<br/>These security groups are not modified. If `create_security_group` is false, the provided security groups must include the desired rules. | `list(string)` | `[]` | no |
 | <a name="input_create_iam_role"></a> [create\_iam\_role](#input\_create\_iam\_role) | Whether to create the MWAA execution IAM role. | `bool` | `true` | no |
@@ -69,6 +66,7 @@ Terraform module to create and manage AWS MWAA environments.
 | <a name="input_mwaa_log_group_prevent_destroy"></a> [mwaa\_log\_group\_prevent\_destroy](#input\_mwaa\_log\_group\_prevent\_destroy) | If true, prevent Terraform from destroying MWAA log groups managed for retention. | `bool` | `true` | no |
 | <a name="input_mwaa_log_group_tags"></a> [mwaa\_log\_group\_tags](#input\_mwaa\_log\_group\_tags) | Additional tags to apply to MWAA log groups (merged with var.tags). | `map(string)` | `{}` | no |
 | <a name="input_mwaa_log_retention_in_days"></a> [mwaa\_log\_retention\_in\_days](#input\_mwaa\_log\_retention\_in\_days) | Retention (in days) to apply to MWAA CloudWatch log groups when manage\_mwaa\_log\_group\_retention=true. | `number` | `30` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name of the MWAA environment. | `string` | n/a | yes |
 | <a name="input_permissions_boundary_arn"></a> [permissions\_boundary\_arn](#input\_permissions\_boundary\_arn) | ARN of the permissions boundary to apply to the created MWAA execution role. If null, no boundary is applied. | `string` | `null` | no |
 | <a name="input_plugins_s3_object_version"></a> [plugins\_s3\_object\_version](#input\_plugins\_s3\_object\_version) | S3 object version for plugins archive (optional). | `string` | `null` | no |
 | <a name="input_plugins_s3_path"></a> [plugins\_s3\_path](#input\_plugins\_s3\_path) | Relative path to plugins archive (e.g. plugins.zip). If null/empty, defaults to plugins.zip. | `string` | `null` | no |
@@ -87,10 +85,12 @@ Terraform module to create and manage AWS MWAA environments.
 | <a name="input_sqs_queue_arns"></a> [sqs\_queue\_arns](#input\_sqs\_queue\_arns) | Explicit list of SQS queue ARNs used by the MWAA role. If empty, defaults to account-scoped airflow-celery-*. | `list(string)` | `[]` | no |
 | <a name="input_startup_script_s3_path"></a> [startup\_script\_s3\_path](#input\_startup\_script\_s3\_path) | Relative path to startup script (e.g. startup.sh). If null/empty, defaults to startup.sh. | `string` | `null` | no |
 | <a name="input_startup_script_s3_path_version"></a> [startup\_script\_s3\_path\_version](#input\_startup\_script\_s3\_path\_version) | S3 object version for startup script (optional). | `string` | `null` | no |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Subnet IDs for the MWAA environment. MWAA currently requires exactly two subnets. | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to all resources created by this module. | `map(string)` | `{}` | no |
 | <a name="input_task_logs_enabled"></a> [task\_logs\_enabled](#input\_task\_logs\_enabled) | Enable task logs. | `bool` | `false` | no |
 | <a name="input_task_logs_level"></a> [task\_logs\_level](#input\_task\_logs\_level) | Task log level. Valid values: CRITICAL, ERROR, WARNING, INFO, DEBUG. | `string` | `"INFO"` | no |
 | <a name="input_trusting_accounts"></a> [trusting\_accounts](#input\_trusting\_accounts) | ⚠️ Deprecated/unused: has no effect. | `list(string)` | `[]` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID where the MWAA environment will be deployed. | `string` | n/a | yes |
 | <a name="input_webserver_access_mode"></a> [webserver\_access\_mode](#input\_webserver\_access\_mode) | Webserver accessibility mode. Valid values: PRIVATE\_ONLY (default) or PUBLIC\_ONLY. | `string` | `"PRIVATE_ONLY"` | no |
 | <a name="input_webserver_logs_enabled"></a> [webserver\_logs\_enabled](#input\_webserver\_logs\_enabled) | Enable webserver logs. | `bool` | `false` | no |
 | <a name="input_webserver_logs_level"></a> [webserver\_logs\_level](#input\_webserver\_logs\_level) | Webserver log level. Valid values: CRITICAL, ERROR, WARNING, INFO, DEBUG. | `string` | `"INFO"` | no |
@@ -102,9 +102,10 @@ Terraform module to create and manage AWS MWAA environments.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_arn"></a> [arn](#output\_arn) | ARN of the MWAA Environment. |
 | <a name="output_created_at"></a> [created\_at](#output\_created\_at) | Creation timestamp of the MWAA Environment. |
+| <a name="output_database_vpc_endpoint_service"></a> [database\_vpc\_endpoint\_service](#output\_database\_vpc\_endpoint\_service) | VPC endpoint service name of the environment's metadata database. With endpoint\_management = "CUSTOMER", create an interface endpoint to it in the environment's subnets. |
 | <a name="output_execution_role_arn"></a> [execution\_role\_arn](#output\_execution\_role\_arn) | IAM Role ARN for the MWAA execution role (created or provided). |
 | <a name="output_kms_key_deprecation"></a> [kms\_key\_deprecation](#output\_kms\_key\_deprecation) | n/a |
 | <a name="output_log_bucket_deprecation"></a> [log\_bucket\_deprecation](#output\_log\_bucket\_deprecation) | Deprecation warnings kept because you asked for them previously. |
@@ -118,4 +119,5 @@ Terraform module to create and manage AWS MWAA environments.
 | <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | All tags assigned to the MWAA Environment. |
 | <a name="output_trusting_accounts_deprecation"></a> [trusting\_accounts\_deprecation](#output\_trusting\_accounts\_deprecation) | n/a |
 | <a name="output_webserver_url"></a> [webserver\_url](#output\_webserver\_url) | Webserver URL of the MWAA Environment. |
+| <a name="output_webserver_vpc_endpoint_service"></a> [webserver\_vpc\_endpoint\_service](#output\_webserver\_vpc\_endpoint\_service) | VPC endpoint service name of the environment's webserver (private webserver only, null otherwise). With endpoint\_management = "CUSTOMER", create an interface endpoint to it in the environment's subnets. |
 <!-- END_TF_DOCS -->
