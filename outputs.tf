@@ -47,6 +47,16 @@ output "webserver_url" {
   value       = aws_mwaa_environment.default.webserver_url
 }
 
+output "database_vpc_endpoint_service" {
+  description = "VPC endpoint service name of the environment's metadata database. With endpoint_management = \"CUSTOMER\", create an interface endpoint to it in the environment's subnets."
+  value       = aws_mwaa_environment.default.database_vpc_endpoint_service
+}
+
+output "webserver_vpc_endpoint_service" {
+  description = "VPC endpoint service name of the environment's webserver (private webserver only, null otherwise). With endpoint_management = \"CUSTOMER\", create an interface endpoint to it in the environment's subnets."
+  value       = aws_mwaa_environment.default.webserver_vpc_endpoint_service
+}
+
 ############################################
 # Security group outputs
 # Guarded so plans do not fail when create_security_group = false

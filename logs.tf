@@ -35,6 +35,8 @@ locals {
 # Variant A: prevent_destroy = true
 # -------------------------------
 resource "aws_cloudwatch_log_group" "mwaa_protected" {
+  #checkov:skip=CKV_AWS_338:Retention is the caller's choice (mwaa_log_retention_in_days)
+  #checkov:skip=CKV_AWS_158:The log groups the module pre-creates take no KMS key yet (kms_key_arn is not passed to them)
   for_each = var.mwaa_log_group_prevent_destroy ? local.mwaa_log_groups_to_manage : {}
 
   # MWAA log group naming pattern
@@ -52,6 +54,8 @@ resource "aws_cloudwatch_log_group" "mwaa_protected" {
 # Variant B: prevent_destroy = false
 # -------------------------------
 resource "aws_cloudwatch_log_group" "mwaa_unprotected" {
+  #checkov:skip=CKV_AWS_338:Retention is the caller's choice (mwaa_log_retention_in_days)
+  #checkov:skip=CKV_AWS_158:No KMS input for the MWAA log groups yet
   for_each = var.mwaa_log_group_prevent_destroy ? {} : local.mwaa_log_groups_to_manage
 
   # MWAA log group naming pattern

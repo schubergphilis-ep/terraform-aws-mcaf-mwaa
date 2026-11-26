@@ -105,6 +105,7 @@ Terraform module to create and manage AWS MWAA environments.
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | ARN of the MWAA Environment. |
 | <a name="output_created_at"></a> [created\_at](#output\_created\_at) | Creation timestamp of the MWAA Environment. |
+| <a name="output_database_vpc_endpoint_service"></a> [database\_vpc\_endpoint\_service](#output\_database\_vpc\_endpoint\_service) | VPC endpoint service name of the environment's metadata database. With endpoint\_management = "CUSTOMER", create an interface endpoint to it in the environment's subnets. |
 | <a name="output_execution_role_arn"></a> [execution\_role\_arn](#output\_execution\_role\_arn) | IAM Role ARN for the MWAA execution role (created or provided). |
 | <a name="output_kms_key_deprecation"></a> [kms\_key\_deprecation](#output\_kms\_key\_deprecation) | n/a |
 | <a name="output_log_bucket_deprecation"></a> [log\_bucket\_deprecation](#output\_log\_bucket\_deprecation) | Deprecation warnings kept because you asked for them previously. |
@@ -118,4 +119,5 @@ Terraform module to create and manage AWS MWAA environments.
 | <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | All tags assigned to the MWAA Environment. |
 | <a name="output_trusting_accounts_deprecation"></a> [trusting\_accounts\_deprecation](#output\_trusting\_accounts\_deprecation) | n/a |
 | <a name="output_webserver_url"></a> [webserver\_url](#output\_webserver\_url) | Webserver URL of the MWAA Environment. |
+| <a name="output_webserver_vpc_endpoint_service"></a> [webserver\_vpc\_endpoint\_service](#output\_webserver\_vpc\_endpoint\_service) | VPC endpoint service name of the environment's webserver (private webserver only, null otherwise). With endpoint\_management = "CUSTOMER", create an interface endpoint to it in the environment's subnets. |
 <!-- END_TF_DOCS -->
