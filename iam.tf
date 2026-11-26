@@ -11,6 +11,7 @@
 ############################################
 
 data "aws_iam_policy_document" "policy" {
+  #checkov:skip=CKV_AWS_108:Backward-compatible default reads secrets on * when secrets_manager_secret_arns is empty; pass ARNs to scope it
   ############################################
   # S3 access to the MWAA "source bucket"
   #
